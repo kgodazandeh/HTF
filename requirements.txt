@@ -1,4 +1,4 @@
-gunicor==20.0.4
+Gunicorn==20.0.4
 alabaster==0.7.12
 alchemy==20.5
 altgraph==0.17
