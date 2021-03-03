@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% block title %}Family{% endblock %}
+
+
+{% block content%}
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.js"></script>
+
+
+
+    <!-- connects families.html to family.js, my own js script -->
+
+    <script src="{{ url_for('static', filename='js/tables.js') }}"></script>
+
+
+    <style>
+    a:link {
+  color: #EF5E54;
+  background-color: transparent;
+  text-decoration: none;
+}
+a:visited {
+  color: #8A7FB8;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #BA3549;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+/* positioning of datatables, because they were different for each page so I have to do them seperately */
+
+    div.dataTables_wrapper  div.dataTables_filter {
+      width: 80%;
+      float: none;
+      text-align: right;
+    }
+
+    div.dataTables_wrapper  div.dataTables_length {
+      width: 80%;
+      float: none;
+      text-align: left;
+    }
+
+
+    div.dataTables_wrapper  div.dataTables_info {
+      width: 80%;
+      float: none;
+      text-align: left;
+    }
+
+    div.dataTables_wrapper  div.dataTables_paginate {
+      width: 70%;
+      float: none;
+      text-align: right;
+
+
+</style>
+</head>
+
+
+<center>
+<h1><br>{{family_name}}</br></h1>
+    
+
+        <table id="faminditab" class="display", style="width:80%">
+            <thead>
+                <tr>
+                  <br>
+                    <th>Protein Name</th>
+                    <th>UniProt ID</th>
+                    <th>Gene Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in data_fam %}
+                <tr>
+                    <td><a href="{{url_for('protein', protein_name=item[3])}}">{{item[3]}} </a></td>
+                    <td>{{item[1]}} </td>
+                    <td>{{item[2]}} </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+</center>
+
+{% endblock %}

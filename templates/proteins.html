@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block title %}HTF Proteins{% endblock %}
+
+{% block content %}
+<head>
+
+    <!--connect javascript to base html -->
+      <!-- connects families.html to jquery and the datatables database-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.js"></script>
+
+
+
+    <!-- connects families.html to family.js, my own js script -->
+
+    <script src="{{ url_for('static', filename='js/tables.js') }}"></script>
+    <style>
+      /* positioning of datatables, because they were different for each page so I have to do them seperately */
+
+
+
+    </style>
+
+
+
+</head>
+
+<body>
+
+  <h1>Transcription Factor Proteins</h1>
+<p><i>Below are 1409 Transcription Factors. Click on the name to find out more about each TF. </i></p>
+  <table id="protab" class="display", style="display:none; width:80%">
+    <thead>
+        <tr>
+            <th>Protein Name</th>
+            <th>Gene Name</th>
+            <th>Family</th>
+            <th>UniProt ID</th>
+            <th>Location</th>
+        </tr>
+    </thead>
+    <tbody>
+      {% for item in data %}
+        <tr>
+            <td><a href="{{url_for('protein', protein_name=item[1])}}">{{ item[1]}} </td>
+            <td> {{ item[0]}} </td>
+            <td>{{ item[4]}}</td>
+            <td>{{ item[2]}}</td>
+            <td>{{ item[3]}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<br/>
+<br/>
+<br/>
+
+{% endblock content%}
+
+
+

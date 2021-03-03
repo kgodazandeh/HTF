@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block title %}Welcome to Team Catherine's HTF database!{% endblock %}
+
+{% block content%}
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+     
+  <body>
+
+
+
+  <div class="column" style="background-color:#80ABB0;">
+    <div class="card">
+      <div class="container">
+        <br/>
+        <h2><b>HTF Families</b></h2>
+        <p class="title"><i>Browse from 139 Families</i></p>
+            <p><button><a class="nav-link" href="{{ url_for('protein_families')}}"><b>Learn more</b></button></a></p>
+      </div>
+    </div>
+  </div>
+    <div class="column" style="background-color:#3EB6AC;">
+    <div class="card">
+      <div class="container">
+        <br/>
+        <h2><b>HTF Proteins</b></h2>
+        <p class="title"><i>Browse from 1410 HTF Proteins</i></p>
+            <p><button><a class="nav-link" href="{{ url_for('proteins')}}"><b>Learn more</b></button></a></p>
+      </div>
+    </div>
+  </div>
+
+   <div class="column" style="background-color:#718CA0;">
+    <div class="card">
+      <div class="container">
+        <br/>
+        <h2><b>HTF Drugs</b></h2>
+        <p class="title"><i>Browse from 524 drugs which affect HTF proteins</i></p>
+            <p><button><a class="nav-link" href="{{ url_for('drugs')}}"><b>Learn more</b></button></a></p>
+      </div>
+    </div>
+  </div>
+
+
+   <div class="column" style="background-color:#93EDD2;">
+    <div class="card">
+      <div class="container">
+        <br/>
+        <h2><b>Gene Expression</b></h2>
+        <p class="title"><i>Upload your own GDS file or enter GEO accession to find out more about your dataset</i></p>
+            <p><button><a class="nav-link" href="{{ url_for('upload')}}"><b>Learn more</b></button></a></p>
+      </div>
+    </div>
+  </div>
+
+
+
+  </body>
+</html>
+
+
+{% endblock %}
+
+
+
+<!---->

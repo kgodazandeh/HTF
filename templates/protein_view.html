@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+{% block title %}{{protein_name}}{% endblock %}
+
+
+{% block content%}
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.js"></script>
+
+
+
+    <!-- connects families.html to family.js, my own js script -->
+
+    <script src="{{ url_for('static', filename='js/tables.js') }}"></script>
+    <style>
+    a:link {
+  color: #EF5E54;
+  background-color: transparent;
+  text-decoration: none;
+}
+a:visited {
+  color: #3F385F;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #BA3549;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+
+/* positioning of datatables, because they were different for each page so I have to do them seperately */
+
+    div.dataTables_wrapper  div.dataTables_filter {
+      width: 80%;
+      float: none;
+      text-align: right;
+    }
+
+    div.dataTables_wrapper  div.dataTables_length {
+      width: 80%;
+      float: none;
+      text-align: left;
+    }
+
+
+    div.dataTables_wrapper  div.dataTables_info {
+      width: 80%;
+      float: none;
+      text-align: left;
+    }
+
+    div.dataTables_wrapper  div.dataTables_paginate {
+      width: 70%;
+      float: none;
+      text-align: right;
+
+</style>
+</head>
+
+
+
+<center>
+    <br/>
+    <h1>{{protein_name}}</h1>
+    {% for item in data_tf %}
+        
+        <tr>
+            <td> <br/>
+                <p> <class = "padding"></p>
+                <b> UniProt ID: </b> <i><a href= "https://www.uniprot.org/uniprot/{{item[0]}}">{{item[0]}}</a></i><br />
+
+                <br/>
+                <b> Name: </b><i>{{item[2]}} </i><br />
+                <br/>
+                <b>Gene name: </b><i>{{item[1]}}</i><br />
+                <br/>
+                <b>Family: </b><i><a href="{{url_for('family', family_name=item[3])}}">{{ item[3]}}</a></td></i> <br />
+                <br/>
+                <b>Location: </b><i>{{item[4]}}</i> <br />
+                <br/>
+            </td>
+            </br>
+        </tr>
+    {% endfor %}
+    <h4><u>Targets of {{protein_name}}:</u></h4>
+    <center>
+    
+
+        <table id="protinditab" class="display", style="width:80%">
+            <thead>
+                <tr>
+                    <th>Target Name</th>
+                    <th>Target Interaction</th>
+                    <th>Target UniProt ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in data_target %}
+                    {% if item[0] : %}
+                    <tr>
+                        <td>{{item[0]}} </td>
+                        <td>{{item[1]}} </td>
+                        <td><a href= "https://www.uniprot.org/uniprot/{{item[2]}}">{{item[2]}}</a> </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td>No Data </td>
+                        <td>No Data </td>
+                        <td>No Data</td>
+                    </tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+            <br/>
+        </table>
+        <br/>
+    <h4><u>Drugs which interact with {{protein_name}}:</u></h4>
+
+    <table id="prodrugtab" class="display", style="width:80%">
+        <thead>
+            <tr>
+                <th>Drug Name</th>
+                <th>Drug ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in data_dr %}
+                {% if item[0] : %}
+                <tr>
+                    <td> <a href="{{url_for('drug1', drug_name=item[1])}}">{{item[1]}}</a></td>
+                    <td><a href= "https://go.drugbank.com/drugs/{{item[0]}}">{{item[0]}}</a> </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td>No Data </td>
+                    <td>No Data </td>
+                </tr>
+                {% endif %}
+            {% endfor %}
+        </tbody>
+        <br/>
+    </table>
+
+
+
+
+    <br/>
+    <br/>
+    </center>
+
+
+{% endblock %}
+
+
+
+
+

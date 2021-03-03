@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% block title %}{{drug_name}}{% endblock %}
+
+
+{% block content%}
+
+<head>    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.js"></script>
+
+
+
+    <!-- connects families.html to family.js, my own js script -->
+
+    <script src="{{ url_for('static', filename='js/tables.js') }}"></script>
+     <style>
+        /* positioning of datatables, because they were different for each page so I have to do them seperately */
+
+    div.dataTables_wrapper  div.dataTables_filter {
+      width: 80%;
+      float: none;
+      text-align: right;
+    }
+
+    div.dataTables_wrapper  div.dataTables_length {
+      width: 80%;
+      float: none;
+      text-align: left;
+    }
+
+
+    div.dataTables_wrapper  div.dataTables_info {
+      width: 80%;
+      float: none;
+      text-align: left;
+    }
+
+    div.dataTables_wrapper  div.dataTables_paginate {
+      width: 70%;
+      float: none;
+      text-align: right;
+    }
+
+    </style>
+</head>
+
+
+<center>
+    {% for item in drug_details %}
+        <h1><br/>{{item[1]}}<br/> <br/> </h1>
+         <b>Drug ID:</b><i> <a href= "https://go.drugbank.com/drugs/{{item[0]}}">{{item[0]}}</a> </i>
+        <br/><br/>
+        
+        <b>Drug description: </b>
+        {% if item[2] : %}
+
+        <i>{{item[2]}}</i>
+        {% else %}
+        <br/>
+        <br/>
+        <p>Not available</p>
+
+        {% endif %}
+
+    {% endfor %}
+        </br>
+        </br>
+        </br>
+
+
+
+    <h4><u>HTF affected:</u></h4> 
+    <table id="druginditab" class="display", style="width:80%">
+        <thead>
+            <tr>
+                <th>Protein Name</th>
+                <th>UniProt ID</th>
+                <th>Protein Family</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in data_drug %}
+            <tr>
+                <td><a href="{{url_for('protein', protein_name=item[2])}}">{{item[2]}}</a> </td>
+                <td>{{item[0]}} </td>
+                <td>{{item[3]}} </td>
+            </tr>
+        </tbody>
+    </table>
+    {% endfor %}
+
+    </center>
+
+
+
+
+
+{% endblock %}

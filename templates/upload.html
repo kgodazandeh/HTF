@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}Upload your Gene Expression Data{% endblock %}
+
+{% block content%}
+<h1> Upload your Gene Expression Data</h1>
+  <body>
+    <br>  
+    <form action="/action_page.php">
+      <input type="file" id="myFile" name="filename">
+      <input type="submit">
+    </form>
+
+    <br>
+
+    <p>Or enter sequence below</p>
+
+    <label for="w3review">Enter GDS file name</label>
+    <p>eg GDS6341379812</p>
+
+    <br>
+    <br>
+
+    <!-- CATHERINES STUFF-->
+    <textarea id="w3review" name="w3review" rows="4" cols="50">
+    ATCGTGAGCGA
+    </textarea>
+
+
+    <p>Search Gene Expression Omnibus datasets here to test <br />
+    Please note you must enter a valid GDS accession number</p>
+    <form class="example" action="" method= 'post'>
+      <input type="text" placeholder="Enter GDS file name", name='gds'>
+    </form>
+
+    <p>{{error}}</p>
+  </body>
+{% endblock content%}

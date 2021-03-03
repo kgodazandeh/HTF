@@ -1,0 +1,171 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+
+
+.column {
+  float: left;
+  width: 50%;
+  margin-bottom: 16px;
+  padding: 60px;
+  text-align: center;
+  height: 350px;
+}
+
+/* links */
+
+a:link {
+  color: black;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:visited {
+  color: grey;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #779ECB;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 18px;
+  height: 200px;
+}
+
+.container {
+  padding: 0 26px;
+}
+
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.title {
+  color: grey;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: none;
+  text-align: center;
+  cursor: pointer;
+  width: 30%;
+}
+
+button:hover {
+  background-color: #779ECB;
+}
+
+
+
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.header {
+  background-color: #F1F1F1;
+  text-align: center;
+  padding: 10px;
+}	
+
+
+/* nav bar  */
+/* z-index tells you that it wants the nav bar to overlap everything */
+
+nav{
+
+	position: sticky !important;
+	top: 0;
+	z-index: 1;
+}
+
+li a:hover {
+  background-color: #779ECB;
+
+}
+
+form input{
+	width: 700px;
+	float: right;
+	text-align: center;
+}
+
+
+h1{
+	color:black;
+	font-size: 46px;
+	text-align: center
+
+}
+
+p{color:black;
+	font-size: 14px;
+	text-align: center
+
+}
+
+body{
+	background-color: white	
+}
+
+
+.padding
+{
+width:400px;
+height:400px;
+padding: 50px 50px 50px 50px;
+}
+
+
+/* css for the tables */
+
+
+  div.dataTables_wrapper  div.dataTables_filter {
+    width: 90%;
+    float: none;
+    text-align: right;
+  }
+
+  div.dataTables_wrapper  div.dataTables_length {
+    width: 22%;
+    float: none;
+    text-align: right;
+  }
+
+
+  div.dataTables_wrapper  div.dataTables_info {
+    width: 27%;
+    float: none;
+    text-align: right;
+  }
+
+  div.dataTables_wrapper  div.dataTables_paginate {
+    width: 90%;
+    float: none;
+    text-align: right;
+  }

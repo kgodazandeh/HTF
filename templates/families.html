@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% block title %}{{family_name}}{% endblock %}
+
+{% block content %}
+<head>
+
+    <!--connect javascript to base html -->
+      <!-- connects families.html to jquery and the datatables database-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.js"></script>
+
+
+
+    <!-- connects families.html to family.js, my own js script -->
+
+    <script src="{{ url_for('static', filename='js/tables.js') }}"></script>
+    <style>
+    	/* positioning of datatables, because they were different for each page so I have to do them seperately */
+
+	div.dataTables_wrapper  div.dataTables_filter {
+	  width: 70%;
+	  float: none;
+	  text-align: right;
+	}
+
+	div.dataTables_wrapper  div.dataTables_length {
+	  width: 70%;
+	  float: none;
+	  text-align: left;
+	}
+
+
+	div.dataTables_wrapper  div.dataTables_info {
+	  width: 70%;
+	  float: none;
+	  text-align: left;
+	}
+
+	div.dataTables_wrapper  div.dataTables_paginate {
+	  width: 70%;
+	  float: none;
+	  text-align: right;
+	}
+
+    </style>
+
+</head>
+<body>
+
+	<h1>Transcription Factor Families</h1>
+	<p><i>&nbsp;Below are 138 families to choose from. Clicking on one will take you to more information about its TFs.</i></p>
+	  <center>
+	<table id="famtab" class="display", style="display:none; width:70%" >
+	        <thead>
+	            <tr>
+	                <th>Family</th>
+	                <th>Number of TFs</th>
+	            </tr>
+	        </thead>
+	        <tbody>
+	        	{% for item in fam %}
+	        <tr>
+	        	
+	            <td><a href="{{url_for('family', family_name=item[0])}}">{{ item[0]}}</td>
+
+            	
+            	
+	            <td> {{item[1]}} </td></a>
+	            {% endfor %}
+	        </tr>
+				
+	    </tbody>
+	</table>
+	    </center> 
+		<br/>
+	    <br/>
+</body>
+{% endblock content%}
+
+
+
+
