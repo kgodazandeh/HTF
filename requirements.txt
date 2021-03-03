@@ -88,7 +88,7 @@ pyflakes==2.2.0
 pyinstaller==4.2
 pyinstaller-hooks-contrib==2020.11
 PyMySQL==1.0.2
-pyodbc===4.0.0-unsupported
+pyodbc===4.0.30
 pyparsing==2.4.7
 pyreadline==2.1
 PySimpleGUI==4.34.0
